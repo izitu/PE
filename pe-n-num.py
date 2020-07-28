@@ -10,7 +10,7 @@ from selenium import webdriver
 s0 = requests.get('http://www.tvc.ru/channel/brand/id/14')
 b = bs4.BeautifulSoup(s0.text, "html.parser")
 
-ser_num = 6  # количество скачиваемых серий
+ser_num = 12  # количество скачиваемых серий
 # ser_num = ser_num - 1
 
 fnd_src = r'src="(.+?)"'  # поиск src в строке
@@ -28,8 +28,10 @@ p_tit = b.select('.series__item .series__item-title')
 p_dat = b.select('.series__month-day .series__item-month')
 # получаем адрес серии
 p_block = b.select('.series__link-block')
+print (ser_num)
 
-for ser in range(ser_num):
+
+for ser in reversed(range(ser_num)):
 	print(ser, ser_img[ser])
 	filename = wget.download(ser_img[ser])
 	os.rename(filename, u'' + os.getcwd() + '/' + filename)
