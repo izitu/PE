@@ -9,9 +9,10 @@ from selenium import webdriver
 
 s0 = requests.get('http://www.tvc.ru/channel/brand/id/14')
 b = bs4.BeautifulSoup(s0.text, "html.parser")
-
-ser_num = 12  # количество скачиваемых серий
-# ser_num = ser_num - 1
+print("Введите количество последних серий, которые хотите скачать:")
+ser_num = int(input())
+# ser_num = 2  # количество скачиваемых серий
+# ser_num = ser_num 22- 1
 
 fnd_src = r'src="(.+?)"'  # поиск src в строке
 fnd_sosrc = 'source src="(.+?)"'  # поиск sourse src в строке
@@ -54,7 +55,12 @@ for ser in reversed(range(ser_num)):
 	print(result[0])
 	print('http://www.tvc.ru' + result[0])
 
-	driver = webdriver.Firefox()
+	fp = webdriver.FirefoxProfile()
+	fp.set_preference('app.update.auto', False)
+	fp.set_preference('app.update.enabled', False)
+	driver = webdriver.Firefox(firefox_profile=fp)
+
+	# driver = webdriver.Firefox()
 	driver.get('http://www.tvc.ru' + result[0])
 	time.sleep(5)
 	htmlSource = driver.page_source
