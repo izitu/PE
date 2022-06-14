@@ -1,10 +1,15 @@
 import PySimpleGUI as sg
 # 1km = 0.6214 / 1kg = 2.20462
 layout = [
-    [sg.Text('Выберете единицу измерения', enable_events = True, key = '-TEXT-'), sg.Spin(['km', 'mil', 'kg', 'pou'])],
-    [sg.Button('Обновить текст', key = '-BUTTON1-')],
+    [
+        sg.Text('Выберете единицу измерения', enable_events = True, key = '-TEXT-'), 
+        sg.Spin(['km', 'mil', 'kg', 'pou'], key = '-ED-')
+    ],
     [sg.Input(key = '-INPUT-')],
-    [sg.Text('тест'), sg.Button('Кнопка', key = '-BUTTON2-')]
+    [
+        sg.Button('Конвертировать', key = '-BUTTON-'), 
+        sg.Text('Здесь будет результат', key = '-REZULT-', visible = False)
+    ],
 ]
 
 window = sg.Window('Конвертер', layout)
@@ -14,3 +19,10 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
+
+    if event == '-TEXT-':
+        print(values)
+        print(values['-ED-'])
+
+    if event == '-BUTTON-' and values['-INPUT-'] != '':
+        window['-REZULT-'].update(visible = True)
