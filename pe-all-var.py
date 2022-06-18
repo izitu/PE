@@ -5,7 +5,7 @@ import json
 from urllib.request import urlopen
 import time
 
-ser_num = 2
+ser_num = 6
 
 s0=requests.get('http://www.tvc.ru/channel/brand/id/14')
 b0=bs4.BeautifulSoup(s0.text, "html.parser")
@@ -56,11 +56,13 @@ for ser in ser_all_block:
     sv = requests.get(video_url_raw).json()
     video_url = sv['path']['quality'][0]['url']
 
+    dir = 'OUTPUT\\'
     print('Скачиваем!!!!')
-    wget.download(img_url)
-    wget.download(video_url)
+    wget.bar_thermometer(0, 100)
+    wget.download(img_url, dir)
+    wget.download(video_url, dir)
 
-    my_file = open(f"P{num}.txt", "w")
+    my_file = open(f"{dir}P{num}.txt", "w")
     
     my_file.writelines(ser_date + '\n')
     my_file.writelines('*' * 15 + '\n')
