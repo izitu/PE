@@ -55,10 +55,11 @@ for ser in reversed(range(ser_num)):
 	print(result[0])
 	print('http://www.tvc.ru' + result[0])
 
-	fp = webdriver.FirefoxProfile()
-	fp.set_preference('app.update.auto', False)
-	fp.set_preference('app.update.enabled', False)
-	driver = webdriver.Firefox(firefox_profile=fp)
+	# fp = webdriver.FirefoxProfile()
+	# fp.set_preference('app.update.auto', False)
+	# fp.set_preference('app.update.enabled', False)
+	# driver = webdriver.Firefox(firefox_profile=fp)
+	driver = webdriver.Firefox()
 
 	# driver = webdriver.Firefox()
 	driver.get('http://www.tvc.ru' + result[0])

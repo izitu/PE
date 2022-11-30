@@ -1,6 +1,8 @@
-import requests, bs4
+﻿import requests
+import bs4
 import re
-import wget, os
+import wget
+import os
 import json
 from urllib.request import urlopen
 import time
@@ -14,7 +16,7 @@ b0=bs4.BeautifulSoup(s0.text, "html.parser")
 ser_all_block = b0.find_all(class_='series__link-block')
 
 # выводим все ссылки с сериями
-num = 1
+num = 5
 for ser in ser_all_block:
     # смотрим только нужное количество серий
     if num > ser_num:
@@ -63,7 +65,7 @@ for ser in ser_all_block:
     wget.download(video_url, dir)
 
     my_file = open(f"{dir}P{num}.txt", "w")
-    
+
     my_file.writelines(ser_date + '\n')
     my_file.writelines('*' * 15 + '\n')
     my_file.writelines(ser_title + '\n')

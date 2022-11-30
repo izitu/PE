@@ -1,6 +1,6 @@
 import os
 
-pe_file = "PE.txt"
+pe_file = "PE0.txt"
 
 # переделаем дату из файла 11 декабря 2021 в 06-12-2021 15:43:00
 def modydate(ddd):
