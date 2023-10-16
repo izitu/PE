@@ -3,7 +3,7 @@ import os
 import requests
 import wget
 
-SER_NUM = 5
+SER_NUM = 1
 DIR = 'OUTPUT'
 URL = 'http://www.tvc.ru/channel/brand/id/14'
 os.chdir(DIR)
@@ -56,8 +56,8 @@ for item in p_block[:SER_NUM]:
 
     my_file.write(ser_title)
     my_file.write(ser_dat)
-    my_file.write('\nАнонс: \n для ют. Православная энциклопедия ТВЦ \n'
-                  'для фб. #Православная_энциклопедия\n' + ser_anons+'\n')
+    my_file.write('\nАнонс: \nПравославная энциклопедия ТВЦ \n'
+                  + ser_anons+'\n')
     my_file.write(img_url + '\n')
     my_file.write(video_url + '\n')
     my_file.write('*' * 50 + '\n\n\n')
